@@ -6,4 +6,8 @@ public class SportController {
         return false;
     }
 
+    public boolean findSport(String sportName) {
+        return false;
+    }
+
 }

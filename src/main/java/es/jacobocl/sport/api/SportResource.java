@@ -8,7 +8,7 @@ public class SportResource {
 
     // POST **/sports body="name"
     public void createSport(String name) throws InvalidSportNameException, ExistingSportException {
-        if (name == null || name == "") {
+        if (name == null || name.isEmpty()) {
             throw new InvalidSportNameException(name);
         }
         if (!new SportController().createSport(name)) {

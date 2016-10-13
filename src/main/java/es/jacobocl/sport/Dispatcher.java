@@ -66,7 +66,7 @@ public class Dispatcher {
         // PUT **/users/{nick}/sport body="sportName"
         if ("users".equals(request.paths()[0]) && "sport".equals(request.paths()[2])) {
             try {
-                response.setBody(userResource.addSportToUser(request.getBody()));
+                userResource.addSportToUser(request.paths()[1], request.getBody());
             } catch (Exception e) {
                 responseError(response, e);
             }
