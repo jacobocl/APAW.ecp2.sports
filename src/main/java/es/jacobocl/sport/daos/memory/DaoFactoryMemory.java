@@ -2,10 +2,13 @@ package es.jacobocl.sport.daos.memory;
 
 import es.jacobocl.sport.daos.DaoFactory;
 import es.jacobocl.sport.daos.SportDao;
+import es.jacobocl.sport.daos.UserDao;
 
 public class DaoFactoryMemory extends DaoFactory {
     
     private SportDao sportDao;
+    
+    private UserDao userDao;
 
     public DaoFactoryMemory() {
     }
@@ -16,6 +19,14 @@ public class DaoFactoryMemory extends DaoFactory {
             sportDao = new SportDaoMemory();
         }
         return sportDao;
+    }
+
+    @Override
+    public UserDao getUserDao() {
+        if (userDao == null) {
+            userDao = new UserDaoMemory();
+        }
+        return userDao;
     }
 
 }

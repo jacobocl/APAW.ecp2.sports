@@ -15,4 +15,6 @@ public abstract class DaoFactory {
 
     public abstract SportDao getSportDao();
 
+    public abstract UserDao getUserDao();
+
 }

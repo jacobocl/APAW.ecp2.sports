@@ -45,7 +45,7 @@ public class UserResource {
         if (checkFieldEmptyOrNull(email)) {
             throw new InvalidUserEmailException(email);
         }
-        if (!new UserController().createUser(nick)) {
+        if (!new UserController().createUser(nick, email)) {
             throw new ExistingUserException(nick);
         }
     }
