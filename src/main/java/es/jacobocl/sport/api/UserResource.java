@@ -29,7 +29,7 @@ public class UserResource {
             throw new InvalidSportNameException(sportName);
         }
         if (!new SportController().findSport(sportName)) {
-            throw new NotFoundSportException();
+            throw new NotFoundSportException(sportName);
         }
     }
 
@@ -59,10 +59,10 @@ public class UserResource {
             throw new InvalidSportNameException(sportName);
         }
         if (!new SportController().findSport(sportName)) {
-            throw new NotFoundSportException();
+            throw new NotFoundSportException(sportName);
         }
         if (!new UserController().addSportToUser(nick, sportName)) {
-            throw new NotFoundUserException();
+            throw new NotFoundUserException(nick);
         }
     }
 
