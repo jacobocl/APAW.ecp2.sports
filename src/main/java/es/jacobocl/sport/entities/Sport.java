@@ -1,9 +1,9 @@
 package es.jacobocl.sport.entities;
 
 public class Sport {
-    
+
     private int id;
-    
+
     private String name;
 
     public Sport(String name) {
@@ -20,10 +20,5 @@ public class Sport {
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public String toString() {
-        return "{\"id\"=" + id + ", \"name\"=\"" + name + "\"}";
     }
 }
