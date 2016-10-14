@@ -13,4 +13,6 @@ public abstract class DaoFactory {
         return factory;
     }
 
+    public abstract SportDao getSportDao();
+
 }
