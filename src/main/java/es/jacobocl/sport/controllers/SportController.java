@@ -6,7 +6,7 @@ import es.jacobocl.sport.entities.Sport;
 public class SportController {
 
     public boolean createSport(String sportName) {
-        boolean existingSport = this.findSport(sportName);
+        boolean existingSport = this.existSport(sportName);
         if (!existingSport) {
             DaoFactory.getFactory().getSportDao().create(new Sport(sportName));
             return true;
@@ -15,7 +15,7 @@ public class SportController {
         }
     }
 
-    public boolean findSport(String sportName) {
+    public boolean existSport(String sportName) {
         Sport sport = DaoFactory.getFactory().getSportDao().findSportByName(sportName);
         return sport != null;
     }

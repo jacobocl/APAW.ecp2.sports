@@ -38,13 +38,13 @@ public class UserController {
         }
     }
 
-    private User findUserByNick(String nick) {
+    public User findUserByNick(String nick) {
         return DaoFactory.getFactory().getUserDao().findUserByNick(nick);
     }
 
     public boolean addSportToUser(String nick, String sportName) {
         User user = findUserByNick(nick);
-        if (user != null) {
+        if (!user.hasSport(sportName)) {
             Sport sport = DaoFactory.getFactory().getSportDao().findSportByName(sportName);
             user.addSport(sport);
             return true;

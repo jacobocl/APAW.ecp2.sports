@@ -8,6 +8,7 @@ import es.jacobocl.sport.exceptions.InvalidUserEmailException;
 import es.jacobocl.sport.exceptions.InvalidUserNickException;
 import es.jacobocl.sport.exceptions.NotFoundSportException;
 import es.jacobocl.sport.exceptions.NotFoundUserException;
+import es.jacobocl.sport.exceptions.ExistingSportInUserException;
 import es.jacobocl.sport.wrappers.UserListWrapper;
 import es.jacobocl.sport.wrappers.UserNickListWrapper;
 
@@ -28,7 +29,7 @@ public class UserResource {
         if (checkFieldEmptyOrNull(sportName)) {
             throw new InvalidSportNameException(sportName);
         }
-        if (!new SportController().findSport(sportName)) {
+        if (!new SportController().existSport(sportName)) {
             throw new NotFoundSportException(sportName);
         }
     }
@@ -51,18 +52,22 @@ public class UserResource {
     }
 
     // PUT **/users/{nick}/sport body="sportName"
-    public void addSportToUser(String nick, String sportName) throws InvalidUserNickException, InvalidSportNameException, NotFoundSportException, NotFoundUserException {
+    public void addSportToUser(String nick, String sportName) throws InvalidUserNickException, InvalidSportNameException,
+            NotFoundSportException, NotFoundUserException, ExistingSportInUserException {
         if (checkFieldEmptyOrNull(nick)) {
             throw new InvalidUserNickException(nick);
         }
         if (checkFieldEmptyOrNull(sportName)) {
             throw new InvalidSportNameException(sportName);
         }
-        if (!new SportController().findSport(sportName)) {
+        if (new UserController().findUserByNick(nick) == null) {
+            throw new NotFoundUserException(nick);
+        }
+        if (!new SportController().existSport(sportName)) {
             throw new NotFoundSportException(sportName);
         }
         if (!new UserController().addSportToUser(nick, sportName)) {
-            throw new NotFoundUserException(nick);
+            throw new ExistingSportInUserException(sportName);
         }
     }
 

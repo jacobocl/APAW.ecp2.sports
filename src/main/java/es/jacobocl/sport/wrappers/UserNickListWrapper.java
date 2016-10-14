@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserNickListWrapper {
-    List<String> userNickList;
+
+    private List<String> userNickList;
 
     public UserNickListWrapper() {
         userNickList = new ArrayList<>();
-    }
-
-    public List<String> getUserNickList() {
-        return userNickList;
     }
 
     public void addNick(String nick) {
@@ -20,7 +17,7 @@ public class UserNickListWrapper {
 
     @Override
     public String toString() {
-        String result = "{\"userList\":[ ";
+        String result = "{\"userList\":[";
         for (String nick : userNickList) {
             result += nick + ",";
         }

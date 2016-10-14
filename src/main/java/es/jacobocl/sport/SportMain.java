@@ -21,7 +21,6 @@ public class SportMain {
         request.setBody("uno:tres@gmail.com");
         this.request();
         request.setMethod(HttpMethod.GET);
-        request.setPath("users");
         request.setBody("");
         this.request();
         request.setMethod(HttpMethod.POST);

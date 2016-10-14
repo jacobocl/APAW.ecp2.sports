@@ -38,7 +38,7 @@ public class User {
     public void addSport(Sport sport) {
         sports.add(sport);
     }
-    
+
     public boolean hasSport(String sportName) {
         for (Sport sport : sports) {
             if (sport.getName().equals(sportName)) {
