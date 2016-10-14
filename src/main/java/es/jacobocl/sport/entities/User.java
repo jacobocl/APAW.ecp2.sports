@@ -1,24 +1,42 @@
 package es.jacobocl.sport.entities;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class User {
 
+    private int id;
+
+    private String nick;
+
+    private String email;
+
+    private List<Sport> sports;
+
     public User(String nick, String email) {
-        // TODO Auto-generated constructor stub
+        this.nick = nick;
+        this.email = email;
+        sports = new LinkedList<Sport>();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNick() {
-        // TODO Auto-generated method stub
-        return "nick";
+        return nick;
     }
 
     public String getEmail() {
-        // TODO Auto-generated method stub
-        return "email";
+        return email;
     }
 
     public void addSport(Sport sport) {
-        // TODO Auto-generated method stub
-
+        sports.add(sport);
     }
 
 }
