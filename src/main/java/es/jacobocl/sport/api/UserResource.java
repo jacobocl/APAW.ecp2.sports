@@ -29,7 +29,7 @@ public class UserResource {
         if (checkFieldEmptyOrNull(sportName)) {
             throw new InvalidSportNameException(sportName);
         }
-        if (!new SportController().existSport(sportName)) {
+        if (!new SportController().existingSport(sportName)) {
             throw new NotFoundSportException(sportName);
         }
     }
@@ -63,7 +63,7 @@ public class UserResource {
         if (new UserController().findUserByNick(nick) == null) {
             throw new NotFoundUserException(nick);
         }
-        if (!new SportController().existSport(sportName)) {
+        if (!new SportController().existingSport(sportName)) {
             throw new NotFoundSportException(sportName);
         }
         if (!new UserController().addSportToUser(nick, sportName)) {
