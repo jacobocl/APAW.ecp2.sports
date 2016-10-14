@@ -1,6 +1,7 @@
 package es.jacobocl.sport.daos.memory;
 
 import java.util.HashMap;
+import java.util.List;
 
 import es.jacobocl.sport.daos.SportDao;
 import es.jacobocl.sport.entities.Sport;
@@ -13,20 +14,23 @@ public class SportDaoMemory extends GenericMemoryDao<Sport> implements SportDao 
 
     @Override
     public Sport findSportByName(String sportName) {
-        // TODO Auto-generated method stub
-        return new Sport(sportName);
+        List<Sport> allSports = this.findAll();
+        for (Sport sport : allSports) {
+            if (sport.getName().equals(sportName)) {
+                return sport;
+            }
+        }
+        return null;
     }
 
     @Override
     protected Integer getId(Sport entity) {
-        // TODO Auto-generated method stub
-        return 1;
+        return entity.getId();
     }
 
     @Override
     protected void setId(Sport entity, Integer id) {
-        // TODO Auto-generated method stub
-
+        entity.setId(id);
     }
 
 }
